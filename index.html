@@ -1,111 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Student Finance Tracker</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #c3ec52, #0ba29d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+        }
+        h1 {
+            text-align: center;
+            color: #0ba29d;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0ba29d;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #087f75;
+        }
+        .transaction-list {
+            margin-top: 20px;
+            border-top: 3px solid #4CAF50;
+            padding-top: 15px;
+        }
+        .balance {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #0ba29d;
+            font-size: 1.2rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #e6f5e6;
+            margin: 5px 0;
+            padding: 8px 10px;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1>Student Portfolio</h1>
-        </header>
+        <h1>Student Finance Tracker</h1>
+        <div class="balance">Balance: ₹<span id="balance">0</span></div>
+        <form id="transaction-form">
+            <label for="type">Transaction Type:</label>
+            <select id="type">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
 
-        <section class="profile-section">
-            <div class="name-section">
-                <h2>APPINI MOKSHAGNA</h2>
-            </div>
-            <div class="profile">
-                <div class="photo-section">
-                    <p>Photo</p>
-                    <img src="img/photo.jpg" alt="Student Photo">
-                </div>
-                <div class="details-section">
-                    <p><strong>Register Number: RA2311026010537</strong></p>
-                    <p><strong>Mail ID :mokshagnaappini@gmail.com</strong></p>
-                    <p><strong>Department: CINTEL</strong></p>
-                    <p><strong>Year / Sem/ Section: 2ND/3RD/AJ-1 </strong></p>
-                </div>
-            </div>
-        </section>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" required>
 
-        <section class="subject-details">
-            <h3>Subject Title: 21CSC201J Data Structures and Algorithms</h3>
-            <p>Handled By: Dr.Sudha Rajesh</p>
-        </section>
+            <label for="purpose">Purpose:</label>
+            <input type="text" id="purpose" required>
 
-        <section class="links">
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/mokshagna-appini-407024334//" target= "_blank">mokshagnaappini@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/Saimokshagna2356" target= "_blank" >https://github.com/Saimokshagna2356</a></p>
-            <p>Portfolio Website (if any): <a href="#">NONE</a></p>
-        </section>
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
 
-        <section class="status">
-            <div class="status-box">
-                <h4>ELab Completion Status</h4>
-                <img src="img/elab.jpg" alt="ELab Completion Status">
-            </div>
-            <div class="status-box">
-                <h4>Lab Experiment Completion Status</h4>
-                <img src="img/lab.jpg" alt="Lab Experiment Completion Status">
-            </div>
-        </section>
+            <button type="button" onclick="addTransaction()">Add Transaction</button>
+            <button type="button" onclick="downloadPDF()">Download PDF</button>
+        </form>
 
-        <section class="achievements">
-            <h4>SOLVED REAL WORLD PROBLEM / CONCEPTUAL TASK</h4>
-            <p>Real-World Problem:
-
-                Overbooking and seat allocation inefficiency: In traditional cinema halls, people sometimes face issues like overbooking or poorly managed seat allocations, 
-                where customers end up with suboptimal seating arrangements or even lose out on their booking due to mismanagement.
-            </p>
-                <p>Conceptual Task:
-                
-                Build a dynamic seat allocation and real-time ticket booking system: Develop a system where customers can view the available seats in real-time, select their preferred seats, and complete the booking process with confidence. 
-                The system should also automatically update seat availability when a ticket is booked, preventing overbooking and ensuring accurate seat allocation.</p>
-        </section>
-
-        <section class="certifications">
-            <h4>CERTIFICATIONS (Coursera/edX/etc.)</h4>
-            <p>Include any online courses, workshops, or certifications related to Data Structures and algorithms, problem-solving</p>
-            <!-- Add image for certifications -->
-            <img src="img/certficate-1.jpg" alt="Certification Image" class="certification-img">
-            <img src="img/certificate-2.jpg" alt="Certification Image" class="certification-img">
-
-        </section>
-
-        <section class="questions">
-            <h4>NPTEL/HOTS QUESTIONS SOLUTION</h4>
-            <p>Question:
-
-                Design a traffic management system using AI. Discuss how it would prioritize vehicles based on different scenarios like rush hour, accidents, or road closures.
-            </p>
-               <p> Solution:
-                
-                A traffic management system using AI can optimize traffic flow by adjusting traffic signals based on real-time data. Here’s how it would work for different scenarios:
-                
-                    Rush Hour: AI adjusts traffic light timings dynamically to prioritize busy roads, reducing congestion by predicting traffic volumes and rerouting traffic where necessary.
-                
-                    Accidents/Road Closures: The system reroutes traffic away from affected areas using real-time data from GPS and sensors, adjusting signals to prioritize alternative routes.
-                
-                    Emergency Vehicle Priority: The system detects emergency vehicles (ambulances, fire trucks) through GPS or sensors and adjusts signals to give them priority.
-                
-                    Night-time Traffic: AI reduces unnecessary signal changes and adjusts traffic flow based on lower traffic volume, prioritizing routes to residential areas.</p>
-        </section>
-
-        <section class="competitions">
-            <h4>CODING COMPETITIONS</h4>
-            <p>Any notable rankings or achievements in coding contests (e.g., LeetCode, CodeChef, HackerRank, Codeforces, ICPC)</p>
-            <!-- Add image for coding competitions -->
-            <img src="img/codechef.png" alt="Coding Competition Image" class="competition-img">
-            <img src="img/hackerrank.png" alt="Coding Competition Image" class="competition-img">
-
-        </section>
-
-        <section class="signature">
-            <p>Signature of the Student</p>
-            <img src="path/to/signature.jpg" alt="Student Signature">
-        </section>
+        <div class="transaction-list" id="transactions">
+            <h3>Transaction History</h3>
+            <ul id="transaction-records"></ul>
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        let balance = 0;
+
+        function addTransaction() {
+            const type = document.getElementById("type").value;
+            const purpose = document.getElementById("purpose").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            const date = document.getElementById("date").value;
+
+            if (!purpose || isNaN(amount) || !date) {
+                alert("Please fill in all details.");
+                return;
+            }
+
+            const listItem = document.createElement("li");
+            listItem.textContent = `${type} - ₹${amount} - ${purpose} on ${date}`;
+            document.getElementById("transaction-records").appendChild(listItem);
+
+            // Update balance
+            if (type === "Income") {
+                balance += amount;
+            } else if (type === "Expense") {
+                balance -= amount;
+            }
+            document.getElementById("balance").textContent = balance.toFixed(2);
+
+            // Clear fields after adding a transaction
+            document.getElementById("transaction-form").reset();
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("Poppins");
+            doc.setFontSize(16);
+            doc.setTextColor(0, 162, 157);
+            doc.text("Student Finance Tracker", 10, 10);
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Balance: ₹${balance.toFixed(2)}`, 10, 20);
+            doc.text("Transaction History:", 10, 30);
+
+            let yPosition = 40;
+            document.querySelectorAll("#transaction-records li").forEach(item => {
+                doc.text(`- ${item.textContent}`, 10, yPosition);
+                yPosition += 10;
+            });
+
+            doc.save("Student_Finance_Tracker.pdf");
+        }
+    </script>
 </body>
 </html>
